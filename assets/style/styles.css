@@ -432,34 +432,56 @@ p { color: var(--text-light); margin-bottom: 20px; }
 .comparison-container {
     position: relative;
     width: 100%;
-    height: 500px;
+    height: 600px;
     overflow: hidden;
+    background: #f5f5f5;
 }
 
 .image-wrapper {
     position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    background: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .image-wrapper img {
-    width: 100%; height: 100%; object-fit: cover;
+    width: 100%; 
+    height: 100%; 
+    object-fit: contain;
     display: block;
+    image-rendering: crisp-edges;
+}
+
+.image-wrapper picture {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .image-wrapper.before {
     width: 50%;
     border-right: 3px solid var(--white);
     z-index: 2;
+    overflow: hidden;
 }
 
 .slider {
     position: absolute;
     -webkit-appearance: none;
     appearance: none;
-    width: 100%; height: 100%;
+    width: 100%; 
+    height: 100%;
     background: transparent;
     z-index: 10;
-    top: 0; left: 0;
+    top: 0; 
+    left: 0;
     outline: none;
     margin: 0;
     cursor: ew-resize;
@@ -467,22 +489,28 @@ p { color: var(--text-light); margin-bottom: 20px; }
 
 .slider-line {
     position: absolute;
-    top: 0; bottom: 0; left: 50%;
+    top: 0; 
+    bottom: 0; 
+    left: 50%;
     width: 3px;
     background: var(--white);
-    z-index: 5;
     z-index: 5;
     pointer-events: none;
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
+
 .slider-button {
     position: absolute;
-    top: 50%; left: 50%;
+    top: 50%; 
+    left: 50%;
     transform: translate(-50%, -50%);
-    width: 40px; height: 40px;
+    width: 40px; 
+    height: 40px;
     background: var(--white);
     border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
     color: var(--primary-color);
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
@@ -490,13 +518,16 @@ p { color: var(--text-light); margin-bottom: 20px; }
 .label {
     position: absolute;
     top: 20px;
-    background: rgba(255,255,255,0.8);
-    padding: 5px 15px;
+    background: rgba(255,255,255,0.9);
+    padding: 8px 16px;
     font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 1px;
     color: var(--text-dark);
+    font-weight: 600;
+    border-radius: 4px;
 }
+
 .label-after { right: 20px; }
 .label-before { left: 20px; }
 
@@ -610,19 +641,514 @@ footer {
 }
 
 /* --- Responsividade --- */
+
+/* Tablets (768px e menores) */
+@media (max-width: 1024px) {
+    .grid-2 { gap: 30px; }
+    .section { padding: 60px 0; }
+    h2 { font-size: 2rem; }
+    .hero-title { font-size: 3.5rem; }
+    .hero-description { font-size: 1.1rem; }
+}
+
+/* Mobile (768px e menores) */
 @media (max-width: 768px) {
-    .grid-2 { grid-template-columns: 1fr; }
-    .nav-links { display: none; } /* Implementar menu mobile com JS */
+    /* Utilitários */
+    .container { padding: 0 15px; }
+    .grid-2 { grid-template-columns: 1fr; gap: 40px; }
+    .section { padding: 50px 0; }
+    
+    /* Header & Nav */
+    .nav-links { display: none; }
     .hamburger { display: block; font-size: 1.5rem; }
-    .hero-content h1 { font-size: 2.5rem; }
+    .logo { font-size: 1.2rem; }
     
     /* Menu Mobile Ativo */
     .nav-links.active {
-        display: flex; flex-direction: column;
-        position: absolute; top: 70px; left: 0; width: 100%;
-        background: var(--white); padding: 20px;
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: var(--white);
+        padding: 20px;
         box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        z-index: 999;
     }
+    
+    /* Hero */
+    .hero {
+        min-height: 100vh;
+        padding-top: 60px;
+    }
+    
+    .hero::before {
+        width: 250px;
+        height: 250px;
+        top: -80px;
+        right: -50px;
+    }
+    
+    .hero::after {
+        width: 200px;
+        height: 200px;
+        bottom: -40px;
+        left: -40px;
+    }
+    
+    .hero-content {
+        padding: 40px 20px;
+    }
+    
+    .hero-title {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+    }
+    
+    .hero-badge {
+        padding: 10px 20px;
+        margin-bottom: 20px;
+    }
+    
+    .badge-text {
+        font-size: 0.8rem;
+    }
+    
+    .hero-description {
+        font-size: 1rem;
+        margin-bottom: 30px;
+    }
+    
+    .hero-cta {
+        gap: 12px;
+    }
+    
+    .btn-lg {
+        padding: 15px 30px !important;
+        font-size: 0.85rem !important;
+        flex-direction: column;
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .btn-secondary {
+        padding: 15px 30px;
+        font-size: 0.85rem;
+        width: 100%;
+    }
+    
+    .hero-scroll {
+        bottom: 20px;
+    }
+    
+    /* Tipografia */
+    h2 { font-size: 1.8rem; margin-bottom: 15px; }
+    h3 { font-size: 1.2rem; }
+    p { font-size: 0.95rem; }
+    
+    .subtitle { font-size: 0.75rem; letter-spacing: 1.5px; }
+    
+    /* Section Header */
+    .section-header {
+        margin-bottom: 40px;
+    }
+    
+    .section-header h2 {
+        font-size: 2rem;
+    }
+    
+    .disclaimer {
+        font-size: 0.75rem;
+    }
+    
+    /* Cards */
+    .card {
+        padding: 30px 20px;
+    }
+    
+    .card-icon {
+        font-size: 2rem;
+    }
+    
+    .card h3 {
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+    }
+    
+    .card p {
+        font-size: 0.9rem;
+    }
+    
+    /* About Section */
+    .about-img {
+        margin-bottom: 30px;
+    }
+    
+    .about-img img {
+        width: 100%;
+        height: auto;
+        max-height: 400px;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+    
+    .credentials-list {
+        gap: 15px;
+    }
+    
+    .credential-item {
+        padding: 12px;
+        gap: 15px;
+    }
+    
+    .credential-item i {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+    
+    .credential-item h4 {
+        font-size: 0.9rem;
+    }
+    
+    .credential-item span {
+        font-size: 0.8rem;
+    }
+    
+    /* Slider Antes e Depois */
+    .comparison-wrapper {
+        max-width: 100%;
+        margin: 40px auto 0;
+        padding: 0;
+    }
+    
+    .comparison-container {
+        height: 420px;
+    }
+    
+    .image-wrapper.before {
+        width: 50%;
+        border-right: 3px solid var(--white);
+    }
+    
+    .label {
+        font-size: 0.75rem;
+        padding: 6px 12px;
+        top: 15px;
+    }
+    
+    .label-after { right: 12px; }
+    .label-before { left: 12px; }
+    
+    .slider-button {
+        width: 36px;
+        height: 36px;
+        font-size: 0.9rem;
+    }
+    
+    .slider-line {
+        width: 2px;
+    }
+    
+    .comparison-wrapper > p {
+        font-size: 0.75rem;
+        padding: 0 15px;
+    }
+    
+    .slider-line {
+        width: 2px;
+    }
+    
+    .comparison-wrapper > p {
+        font-size: 0.75rem;
+    }
+    
+    /* CTA Section */
+    .cta-section h2 {
+        font-size: 1.8rem;
+    }
+    
+    .cta-section p {
+        font-size: 1rem;
+    }
+    
+    /* Footer */
+    .footer-content {
+        gap: 30px;
+    }
+    
+    .footer-col h3 {
+        font-size: 1.1rem;
+        margin-bottom: 15px;
+    }
+    
+    .footer-col p {
+        font-size: 0.9rem;
+    }
+    
+    .socials a {
+        font-size: 1.2rem;
+        margin-right: 15px;
+    }
+    
+    .copy {
+        font-size: 0.75rem;
+        padding-top: 20px;
+        margin-top: 30px;
+    }
+    
+    /* WhatsApp Float */
+    .whatsapp-float {
+        width: 55px;
+        height: 55px;
+        bottom: 20px;
+        right: 20px;
+        font-size: 1.5rem;
+    }
+}
+
+/* Celulares pequenos (480px e menores) */
+@media (max-width: 480px) {
+    /* Container e Spacing */
+    .container { padding: 0 12px; }
+    .section { padding: 40px 0; }
+    
+    /* Header */
+    #header {
+        padding: 15px 0;
+    }
+    
+    .logo { font-size: 1rem; }
+    .logo-prefix { font-size: 0.7rem; }
+    
+    /* Hero */
+    .hero {
+        min-height: auto;
+        height: auto;
+        padding: 80px 0 40px;
+    }
+    
+    .hero::before,
+    .hero::after {
+        display: none;
+    }
+    
+    .hero-content {
+        padding: 30px 15px;
+    }
+    
+    .hero-title {
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+        line-height: 1.2;
+    }
+    
+    .hero-badge {
+        padding: 8px 16px;
+        margin-bottom: 15px;
+    }
+    
+    .badge-text {
+        font-size: 0.75rem;
+    }
+    
+    .hero-description {
+        font-size: 0.9rem;
+        margin-bottom: 25px;
+    }
+    
+    .btn-lg {
+        padding: 12px 24px !important;
+        font-size: 0.8rem !important;
+        gap: 8px;
+    }
+    
+    .btn-text-mobile {
+        font-size: 0.75rem;
+    }
+    
+    .btn-secondary {
+        padding: 12px 24px;
+        font-size: 0.8rem;
+    }
+    
+    .hero-scroll {
+        bottom: 15px;
+    }
+    
+    .hero-scroll span {
+        font-size: 0.75rem;
+    }
+    
+    .hero-scroll i {
+        font-size: 1rem;
+    }
+    
+    /* Tipografia */
+    h2 { font-size: 1.5rem; margin-bottom: 12px; }
+    h3 { font-size: 1rem; }
+    p { font-size: 0.9rem; }
+    
+    .subtitle { font-size: 0.7rem; letter-spacing: 1px; }
+    
+    /* Section */
+    .section-header { margin-bottom: 30px; }
+    .section-header h2 { font-size: 1.5rem; }
+    
+    /* Cards */
+    .card {
+        padding: 20px 15px;
+        margin-bottom: 20px;
+    }
+    
+    .card-icon { font-size: 1.8rem; margin-bottom: 15px; }
+    .card h3 { font-size: 1rem; margin-bottom: 8px; }
+    .card p { font-size: 0.85rem; }
+    
+    /* About */
+    .about-img img {
+        max-height: 300px;
+    }
+    
+    .about-text { margin-top: 20px; }
+    
+    .credentials-list {
+        gap: 12px;
+    }
+    
+    .credential-item {
+        padding: 10px;
+        gap: 12px;
+    }
+    
+    .credential-item i {
+        width: 32px;
+        height: 32px;
+        font-size: 0.9rem;
+    }
+    
+    .credential-item h4 {
+        font-size: 0.85rem;
+    }
+    
+    .credential-item span {
+        font-size: 0.75rem;
+    }
+    
+    .btn-text {
+        font-size: 0.8rem;
+        margin-top: 20px;
+    }
+    
+    /* Comparison Slider */
+    .comparison-wrapper {
+        padding: 0;
+        margin: 40px auto 0;
+    }
+    
+    .comparison-container {
+        height: 350px;
+    }
+    
+    .image-wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #f5f5f5;
+    }
+    
+    .image-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+    
+    .image-wrapper.before {
+        width: 50%;
+        border-right: 2px solid var(--white);
+        z-index: 2;
+    }
+    
+    .label {
+        font-size: 0.65rem;
+        padding: 5px 10px;
+        top: 12px;
+        background: rgba(0, 0, 0, 0.7);
+        color: var(--white);
+    }
+    
+    .label-after { right: 10px; }
+    .label-before { left: 10px; }
+    
+    .slider-button {
+        width: 32px;
+        height: 32px;
+        font-size: 0.8rem;
+    }
+    
+    .slider-line { 
+        width: 2px;
+    }
+    
+    .comparison-wrapper > p {
+        font-size: 0.7rem;
+        margin-top: 10px;
+        padding: 0 15px;
+    }
+    
+    .comparison-wrapper > p {
+        font-size: 0.7rem;
+        margin-top: 10px;
+    }
+    
+    /* CTA */
+    .cta-section h2 { font-size: 1.5rem; }
+    .cta-section p { font-size: 0.9rem; }
+    
+    /* Footer */
+    .footer-content {
+        gap: 25px;
+    }
+    
+    .footer-col h3 {
+        font-size: 1rem;
+        margin-bottom: 12px;
+    }
+    
+    .footer-col p {
+        font-size: 0.85rem;
+    }
+    
+    .socials a {
+        font-size: 1.1rem;
+        margin-right: 12px;
+    }
+    
+    .copy {
+        font-size: 0.7rem;
+        padding-top: 15px;
+        margin-top: 20px;
+    }
+    
+    /* WhatsApp */
+    .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        bottom: 15px;
+        right: 15px;
+        font-size: 1.3rem;
+    }
+    
+    /* Badge flutuante */
+    .floating-badge {
+        padding: 12px;
+        min-width: 90px;
+    }
+    
+    .badge-number { font-size: 1rem; }
 }
 
 /* --- Estilos Específicos para a Seção Sobre (Formação) --- */

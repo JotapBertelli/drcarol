@@ -145,11 +145,17 @@
             <div class="comparison-wrapper reveal-up">
                 <div class="comparison-container">
                     <div class="image-wrapper after">
-                        <img src="./assets/img/depois.png" alt="Resultado Depois">
+                        <picture>
+                            <source media="(max-width: 768px)" srcset="./assets/img/2.png">
+                            <img src="./assets/img/depois.png" alt="Resultado Depois">
+                        </picture>
                         <span class="label label-after">Depois</span>
                     </div>
                     <div class="image-wrapper before">
-                        <img src="./assets/img/antes.png" alt="Resultado Antes">
+                        <picture>
+                            <source media="(max-width: 768px)" srcset="./assets/img/1.png">
+                            <img src="./assets/img/antes.png" alt="Resultado Antes">
+                        </picture>
                         <span class="label label-before">Antes</span>
                     </div>
                     <input type="range" min="0" max="100" value="50" class="slider" id="compareSlider">
