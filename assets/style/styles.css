@@ -783,6 +783,14 @@ footer {
     /* About Section */
     .about-img {
         margin-bottom: 30px;
+        padding: 20px;
+        background: var(--white);
+        border: 12px solid var(--white);
+        box-shadow: 
+            0 0 0 1px rgba(168, 136, 96, 0.2),
+            0 10px 40px rgba(0, 0, 0, 0.12),
+            inset 0 0 0 1px rgba(168, 136, 96, 0.1);
+        border-radius: 12px;
     }
     
     .about-img img {
@@ -1007,8 +1015,19 @@ footer {
     .card p { font-size: 0.85rem; }
     
     /* About */
+    .about-img {
+        padding: 15px;
+        border: 10px solid var(--white);
+        box-shadow: 
+            0 0 0 1px rgba(168, 136, 96, 0.15),
+            0 8px 30px rgba(0, 0, 0, 0.1),
+            inset 0 0 0 1px rgba(168, 136, 96, 0.05);
+        border-radius: 10px;
+    }
+    
     .about-img img {
         max-height: 300px;
+        border-radius: 6px;
     }
     
     .about-text { margin-top: 20px; }
@@ -1158,7 +1177,29 @@ footer {
 /* --- Estilos Específicos para a Seção Sobre (Formação) --- */
 
 /* Badge flutuante na foto (Toque de design moderno) */
-.about-img { position: relative; }
+.about-img { 
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+    background: var(--white);
+    border: 15px solid var(--white);
+    box-shadow: 
+        0 0 0 1px rgba(168, 136, 96, 0.2),
+        0 10px 40px rgba(0, 0, 0, 0.12),
+        inset 0 0 0 1px rgba(168, 136, 96, 0.1);
+    border-radius: 12px;
+    transition: var(--transition);
+}
+
+.about-img:hover {
+    box-shadow: 
+        0 0 0 1px rgba(168, 136, 96, 0.3),
+        0 20px 50px rgba(0, 0, 0, 0.15),
+        inset 0 0 0 1px rgba(168, 136, 96, 0.15);
+    transform: translateY(-5px);
+}
 
 .floating-badge {
     position: absolute;
